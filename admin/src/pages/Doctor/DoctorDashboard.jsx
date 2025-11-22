@@ -116,10 +116,10 @@ const DoctorDashboard = () => {
           </div>
 
           {/* ---------- Chatbots Section Beside Bookings ---------- */}
-          <div className="flex flex-col gap-4">
+          {/* <div className="flex flex-col gap-4">
             <DrugDiseaseChat />
             <DrugIntraction />
-          </div>
+          </div> */}
         </div>
       </div>
     )

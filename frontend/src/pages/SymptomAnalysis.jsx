@@ -38,13 +38,13 @@ const SymptomAnalysis = () => {
 
     setLoading(true);
     try {
-      const response = await axios.post("http://127.0.0.1:5000/symptoms-predict", {
+      const response = await axios.post("https://rohit-mewada-1125-sympcare-models.hf.space/symptoms-predict", {
         name,
         symptoms,
       });
 
       const predictedDisease = response.data["Most Accurate Disease"];
-      const diseaseDetails = ndiseaseInfo[predictedDisease];
+      const diseaseDetails = diseaseInfo[predictedDisease];
       setPrediction(diseaseDetails);
       getLocationAndFetch();
     } catch (err) {
@@ -81,7 +81,7 @@ const SymptomAnalysis = () => {
 
   const fetchCentersFromBackend = async (lat, lon) => {
     try {
-      const response = await axios.get("http://localhost:5000/fetchAyurvedicCenters", {
+      const response = await axios.get("https://rohit-mewada-1125-sympcare-models.hf.space/fetchAyurvedicCenters", {
         params: { lat, lon },
       });
 
@@ -129,7 +129,7 @@ const SymptomAnalysis = () => {
                   onChange={(e) => handleChange(i, e.target.value)}
                 >
                   <option value="">Select a symptom</option>
-                  {newsymptomsList.map((s, idx) => (
+                  {symptomsList.map((s, idx) => (
                     <option key={idx} value={s}>
                       {s.replace(/_/g, " ")}
                     </option>
@@ -191,7 +191,7 @@ const SymptomAnalysis = () => {
 
             <div className="mt-12 bg-white p-6 rounded-lg shadow-lg">
               <h3 className="text-2xl font-semibold mb-4 text-center">
-                Nearby Ayurvedic Centers
+                Nearby Hospitals
               </h3>
               <div className="grid md:grid-cols-2 gap-4">
                 {centers.map((center, idx) => (

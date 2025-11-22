@@ -50,7 +50,7 @@ const SkinDiseaseDetector = () => {
     formData.append("image", file);
 
     try {
-      const response = await fetch("http://127.0.0.1:5000/skin-predict", {
+      const response = await fetch("https://rohit-mewada-1125-sympcare-models.hf.space/skin-predict", {
         method: "POST",
         body: formData,
       });
@@ -187,7 +187,7 @@ const SkinDiseaseDetector = () => {
 
   const fetchCentersFromBackend = async (lat, lon) => {
     try {
-      const response = await axios.get("http://localhost:5000/fetchAyurvedicCenters", {
+      const response = await axios.get("https://rohit-mewada-1125-sympcare-models.hf.space/fetchAyurvedicCenters", {
         params: { lat, lon },
       });
 
@@ -331,7 +331,7 @@ const SkinDiseaseDetector = () => {
 
 
 
-          {location && (
+          {/* {location && (
             <div className="mt-6 p-4 bg-blue-100 rounded shadow">
               {loadingCenters && <p>Loading centers...</p>}
               {!loadingCenters && centers.length > 0 && (
@@ -370,7 +370,7 @@ const SkinDiseaseDetector = () => {
 
               {!loadingCenters && centers.length === 0 && <p>No Ayurvedic centers found nearby.</p>}
             </div>
-          )}
+          )} */}
 
 
 

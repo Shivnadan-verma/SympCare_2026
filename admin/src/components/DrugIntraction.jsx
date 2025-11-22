@@ -109,37 +109,39 @@ const DrugIntraction = () => {
   };
 
   const sendMessage = async (message) => {
-    if (!message.trim()) return;
+  if (!message.trim()) return;
 
-    if (isListening && recognition.current) {
-      recognition.current.stop();
-      setIsListening(false);
-    }
+  if (isListening && recognition.current) {
+    recognition.current.stop();
+    setIsListening(false);
+  }
 
-    setMessages((prev) => [...prev, { sender: "user", text: message }]);
-    setInput("");
-    setIsThinking(true);
+  setMessages((prev) => [...prev, { sender: "user", text: message }]);
+  setInput("");
+  setIsThinking(true);
 
-    try {
-      const response = await fetch("http://127.0.0.1:5000/chats", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message }),
-      });
-      const data = await response.json();
-      setMessages((prev) => [...prev, { sender: "bot", text: data.response }]);
-    } catch (error) {
-      setMessages((prev) => [
-        ...prev,
-        {
-          sender: "bot",
-          text: "⚠️ Error: Unable to reach server! Please try again later.",
-        },
-      ]);
-    } finally {
-      setIsThinking(false);
-    }
-  };
+  try {
+    const response = await fetch("http://127.0.0.1:5000/drug-interaction", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ query: message }),
+    });
+
+    const data = await response.json();
+    setMessages((prev) => [...prev, { sender: "bot", text: data.response }]);
+  } catch (error) {
+    setMessages((prev) => [
+      ...prev,
+      {
+        sender: "bot",
+        text: "⚠️ Error: Unable to reach server! Please try again later.",
+      },
+    ]);
+  } finally {
+    setIsThinking(false);
+  }
+};
+
 
   useEffect(() => {
     // Scroll to bottom

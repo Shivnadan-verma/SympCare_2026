@@ -58,7 +58,7 @@ const MentalHealthAssessment = () => {
 
   const sendToBackend = async (responses) => {
     try {
-      const res = await axios.post("http://127.0.0.1:5000/assess", { responses, role });
+      const res = await axios.post("https://rohit-mewada-1125-sympcare-models.hf.space/assess", { responses, role });
       const predictions = res.data.prediction;
       const maxPrediction = Object.entries(predictions).reduce((max, [key, value]) =>
         value > max.value ? { key, value } : max, { key: "", value: 0 }
@@ -79,7 +79,7 @@ const MentalHealthAssessment = () => {
     setIsLoading(true);
 
     try {
-      const response = await fetch("http://127.0.0.1:5000/chats", {
+      const response = await fetch("https://rohit-mewada-1125-sympcare-models.hf.space/chats", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ message }),
