@@ -7,8 +7,8 @@ const NutritionCheck = () => {
   const [deficiencyInfo, setDeficiencyInfo] = useState(null);
   const [error, setError] = useState(null);
   const [foodHerbImages, setFoodHerbImages] = useState({});
-  const [GEMINI_API_KEY, setGEMINI_API_KEY] = useState("AIzaSyCKM0BgERDFWyf-_FbJxI6AnNMxqzhcwmo");
-  const [API_KEY_PIXABAY, setAPI_KEY_PIXABAY] = useState("49856975-b50f4f2288e42fd6f79dc9c5d");
+  const [GEMINI_API_KEY, setGEMINI_API_KEY] = useState("mdnb");
+  const [API_KEY_PIXABAY, setAPI_KEY_PIXABAY] = useState("jd");
 
   const predefinedSymptoms = [
     "Hair fall", "Brittle nails", "Fatigue", "Dry skin", "Weak immunity",
